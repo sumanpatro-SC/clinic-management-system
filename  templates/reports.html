@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="/static/css/style.css"></head>
+<body>
+    <nav>
+        <a href="/">Home</a><a href="/doctors.html">Doctors</a><a href="/patients.html">Patients</a><a href="/billing.html">Billing</a><a href="/reports.html">Reports</a>
+    </nav>
+    <div class="container">
+        <h2>Clinic Financial Reports</h2>
+        <div style="margin-bottom: 15px; display: flex; gap: 10px;">
+            <button class="pdf-btn" onclick="window.print()">Export to PDF</button>
+            <button class="export-btn" onclick="exportCSV()">Export to CSV</button>
+        </div>
+        <table id="reportTable">
+            <thead>
+                <tr><th>P-ID</th><th>Patient Name</th><th>Bill Amount</th><th>Contact</th><th>Doctor ID</th><th>Action</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script src="/static/js/reports.js"></script>
+    <footer>Build with Jagrurati Satapathy</footer>
+</body>
+</html>

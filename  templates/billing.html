@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Billing Management</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a><a href="/doctors.html">Doctors</a>
+        <a href="/patients.html">Patients</a>
+        <a href="/billing.html" style="text-decoration: underline;">Billing</a>
+        <a href="/reports.html">Reports</a>
+    </nav>
+    <div class="container">
+        <h2>Patient Billing</h2>
+        <form id="billForm">
+            <select id="bn" onchange="autoFillContact()" required><option value="">Select Patient</option></select>
+            <select id="bd" required><option value="">Select Doctor</option></select>
+            <input type="text" id="bc" placeholder="Contact" readonly>
+            <input type="number" id="ba" placeholder="Amount" required>
+            <button type="submit">Submit Bill</button>
+        </form>
+
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+            <button onclick="sortTable('billTable', 4)">Sort By Amount</button>
+        </div>
+
+        <table id="billTable">
+            <thead>
+                <tr><th>ID</th><th>Patient Name</th><th>Doc ID</th><th>Contact</th><th>Amount</th><th>Actions</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script src="/static/js/billing.js"></script>
+    <footer>Build with Jagrurati Satapathy</footer>
+</body>
+</html>
