@@ -83,7 +83,13 @@ const exportToCSV = (tableId) => {
     const rows = document.querySelectorAll(`#${tableId} tr`);
     for (const row of rows) {
         const cols = Array.from(row.querySelectorAll("td, th")).slice(0, -1);
-        csv.push(cols.map(c => c.innerText).join(","));
+        csv.push(cols.map(c => {
+            let text = c.innerText;
+            if (text.includes(",") || text.includes("\n") || text.includes('"')) {
+                return `"${text.replace(/"/g, '""')}"`;
+            }
+            return text;
+        }).join(","));
     }
     const blob = new Blob([csv.join("\n")], { type: 'text/csv' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob);

@@ -41,4 +41,5 @@ class ClinicHandler(http.server.SimpleHTTPRequestHandler):
 if __name__ == "__main__":
     init_db()
     print(f"Clinic System: http://localhost:{PORT}")
+    socketserver.TCPServer.allow_reuse_address = True
     socketserver.TCPServer(("", PORT), ClinicHandler).serve_forever()

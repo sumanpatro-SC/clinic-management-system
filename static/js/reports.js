@@ -44,7 +44,13 @@ const downloadReportPDF = () => {
 const exportReportCSV = () => {
     let csv = "Patient ID,Name,Bill,Contact,Doctor ID\n";
     document.querySelectorAll("#reportTable tbody tr").forEach(tr => {
-        const row = Array.from(tr.querySelectorAll("td")).slice(0, 5).map(td => td.innerText).join(",");
+        const row = Array.from(tr.querySelectorAll("td")).slice(0, 5).map(td => {
+            let text = td.innerText;
+            if (text.includes(",") || text.includes("\n") || text.includes('"')) {
+                return `"${text.replace(/"/g, '""')}"`;
+            }
+            return text;
+        }).join(",");
         csv += row + "\n";
     });
     const blob = new Blob([csv], { type: 'text/csv' });
