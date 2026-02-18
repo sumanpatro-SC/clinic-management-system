@@ -1,12 +1,15 @@
+<!-- Project file: templates/doctors.html — template for doctor management UI; includes doctors.js -->
 <!DOCTYPE html>
 <html>
-<head><link rel="stylesheet" href="/static/css/style.css"></head>
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
 <body>
     <nav>
-        <a href="/">Home</a>
-        <a href="/doctors.html">Doctors</a>
-        <a href="/patients.html">Patients</a>
-        <a href="/billing.html">Billing</a>
+        <a href="/">Home</a><a href="/doctors.html" style="text-decoration: underline;">Doctors</a>
+        <a href="/patients.html">Patients</a><a href="/billing.html">Billing</a>
         <a href="/reports.html">Reports</a>
     </nav>
     <div class="container">
@@ -20,8 +23,8 @@
 
         <div style="margin-bottom: 10px; display: flex; gap: 10px;">
             <button onclick="sortTable(1)">Sort By Name</button>
-            <button class="pdf-btn" onclick="exportToPDF()">Export to PDF</button>
-            <button class="export-btn" onclick="exportToCSV('docTable')" style="margin-left:auto;">Export to CSV</button>
+            <button onclick="downloadDoctorsPDF()" style="background: #f4b400; color: black;">Download PDF</button>
+            <button class="export-btn" onclick="exportToCSV('docTable')" style="margin-left:auto;">Export CSV</button>
         </div>
 
         <table id="docTable">
@@ -32,6 +35,8 @@
         </table>
     </div>
     <script src="/static/js/doctors.js"></script>
-    <footer>Build with P Suman Patro</footer>
+    <footer>
+        <p>© 2026 LifeCare Management System | Build with ❤️ by P Suman Patro</p>
+    </footer>
 </body>
 </html>

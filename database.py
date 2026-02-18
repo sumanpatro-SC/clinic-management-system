@@ -1,3 +1,4 @@
+# Project file: database.py — initializes SQLite DB and handles API data requests used by `app.py`
 import sqlite3
 
 def init_db():
@@ -19,30 +20,45 @@ def handle_request(path, method, data=None):
             cur.execute("SELECT * FROM doctors")
             res = cur.fetchall()
         elif method == 'POST':
-            if data.get('action') == 'delete':
+            action = data.get('action')
+            if action == 'delete':
                 cur.execute("DELETE FROM doctors WHERE id=?", (data['id'],))
+            elif action == 'update':
+                cur.execute("UPDATE doctors SET name=?, spec=?, contact=? WHERE id=?", 
+                            (data['name'], data['spec'], data['contact'], data['id']))
             else:
-                cur.execute("INSERT INTO doctors (name, spec, contact) VALUES (?,?,?)", (data['name'], data['spec'], data['contact']))
+                cur.execute("INSERT INTO doctors (name, spec, contact) VALUES (?,?,?)", 
+                            (data['name'], data['spec'], data['contact']))
     
     elif "/api/patients" in path:
         if method == 'GET':
             cur.execute("SELECT * FROM patients")
             res = cur.fetchall()
         elif method == 'POST':
-            if data.get('action') == 'delete':
+            action = data.get('action')
+            if action == 'delete':
                 cur.execute("DELETE FROM patients WHERE id=?", (data['id'],))
+            elif action == 'update':
+                cur.execute("UPDATE patients SET name=?, contact=?, date=?, doc_id=? WHERE id=?", 
+                            (data['name'], data['contact'], data['date'], data['doc_id'], data['id']))
             else:
-                cur.execute("INSERT INTO patients (name, contact, date, doc_id) VALUES (?,?,?,?)", (data['name'], data['contact'], data['date'], data['doc_id']))
+                cur.execute("INSERT INTO patients (name, contact, date, doc_id) VALUES (?,?,?,?)", 
+                            (data['name'], data['contact'], data['date'], data['doc_id']))
 
     elif "/api/billing" in path:
         if method == 'GET':
             cur.execute("SELECT * FROM billing")
             res = cur.fetchall()
         elif method == 'POST':
-            if data.get('action') == 'delete':
+            action = data.get('action')
+            if action == 'delete':
                 cur.execute("DELETE FROM billing WHERE id=?", (data['id'],))
+            elif action == 'update':
+                cur.execute("UPDATE billing SET p_name=?, d_id=?, contact=?, amount=? WHERE id=?", 
+                            (data['p_name'], data['d_id'], data['contact'], data['amount'], data['id']))
             else:
-                cur.execute("INSERT INTO billing (p_name, d_id, contact, amount) VALUES (?,?,?,?)", (data['p_name'], data['d_id'], data['contact'], data['amount']))
+                cur.execute("INSERT INTO billing (p_name, d_id, contact, amount) VALUES (?,?,?,?)", 
+                            (data['p_name'], data['d_id'], data['contact'], data['amount']))
 
     conn.commit()
     conn.close()

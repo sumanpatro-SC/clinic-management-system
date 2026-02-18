@@ -1,8 +1,11 @@
+<!-- Project file: templates/patients.html — template for patient registration and list; loads patients.js -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     <title>Patient Management</title>
 </head>
 <body>
@@ -23,6 +26,7 @@
 
         <div style="margin-top: 20px; display: flex; gap: 10px;">
             <button onclick="sortTable('patTable', 1)">Sort By Name</button>
+            <button onclick="downloadPatientsPDF()" style="background: #f4b400; color: black;">Download PDF</button>
             <button class="export-btn" onclick="exportToCSV('patTable')" style="margin-left:auto;">Export CSV</button>
         </div>
 
@@ -34,6 +38,8 @@
         </table>
     </div>
     <script src="/static/js/patients.js"></script>
-    <footer>Build with P Suman Patro</footer>
+    <footer>
+        <p>© 2026 LifeCare Management System | Build with ❤️ by P Suman Patro</p>
+    </footer>
 </body>
 </html>

@@ -1,24 +1,44 @@
+<!-- Project file: templates/reports.html — template for financial reports summary; loads reports.js -->
 <!DOCTYPE html>
-<html>
-<head><link rel="stylesheet" href="/static/css/style.css"></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <title>Clinic Reports</title>
+</head>
 <body>
     <nav>
-        <a href="/">Home</a><a href="/doctors.html">Doctors</a><a href="/patients.html">Patients</a><a href="/billing.html">Billing</a><a href="/reports.html">Reports</a>
+        <a href="/">Home</a><a href="/doctors.html">Doctors</a>
+        <a href="/patients.html">Patients</a><a href="/billing.html">Billing</a>
+        <a href="/reports.html" style="text-decoration: underline;">Reports</a>
     </nav>
     <div class="container">
-        <h2>Clinic Financial Reports</h2>
-        <div style="margin-bottom: 15px; display: flex; gap: 10px;">
-            <button class="pdf-btn" onclick="window.print()">Export to PDF</button>
-            <button class="export-btn" onclick="exportCSV()">Export to CSV</button>
+        <h2>Clinic Financial Report Summary</h2>
+        
+        <div style="margin-bottom: 20px; display: flex; gap: 10px;">
+            <button class="pdf-btn" onclick="downloadReportPDF()">Download PDF Report</button>
+            <button class="export-btn" onclick="exportReportCSV()">Export CSV</button>
         </div>
+
         <table id="reportTable">
             <thead>
-                <tr><th>P-ID</th><th>Patient Name</th><th>Bill Amount</th><th>Contact</th><th>Doctor ID</th><th>Action</th></tr>
+                <tr>
+                    <th>P-ID</th>
+                    <th>Patient Name</th>
+                    <th>Bill Amount</th>
+                    <th>Contact</th>
+                    <th>Doctor ID</th>
+                    <th class="no-print">Action</th>
+                </tr>
             </thead>
             <tbody></tbody>
         </table>
     </div>
-    <script src="/static/js/reports.js"></script>
-    <footer>Build with P Suman Patro</footer>
+    <script src="/static/js/reports.js?v=2"></script>
+    <footer>
+        <p>© 2026 LifeCare Management System | Build with ❤️ by P Suman Patro</p>
+    </footer>
 </body>
 </html>

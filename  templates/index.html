@@ -1,23 +1,96 @@
+<!-- Project file: templates/index.html — homepage template; links to other pages and loads shared CSS/JS -->
 <!DOCTYPE html>
-<html>
-<head><link rel="stylesheet" href="/static/css/style.css"></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>LifeCare | Premium Clinic Management</title>
+</head>
 <body>
     <nav>
-        <a href="/">Home</a><a href="/doctors.html">Doctors</a>
-        <a href="/patients.html">Patients</a><a href="/billing.html">Billing</a>
-        <a href="/reports.html">Reports</a>
+        <div class="nav-container">
+            <a href="/" style="float: left; font-size: 1.5rem; font-weight: 800; color: white; text-decoration: none;">✨ LifeCare</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/doctors.html">Doctors</a>
+                <a href="/patients.html">Patients</a>
+                <a href="/billing.html">Billing</a>
+                <a href="/reports.html">Reports</a>
+            </div>
+        </div>
     </nav>
-    <div class="container">
-        <header class="hero">
-            <h1>LifeCare Clinic Management</h1>
-            <p>Providing Excellence in Healthcare</p>
-        </header>
-        <section class="info-grid">
-            <div class="card"><h3>Our Doctors</h3><p>Specialists in Cardiology, Orthopedics, and more.</p></div>
-            <div class="card"><h3>Facilities</h3><p>24/7 Pharmacy, Emergency Care, and Advanced Diagnostics.</p></div>
-            <div class="card"><h3>Reviews</h3><p>"Amazing staff and quick response!" - Jagrurati S.</p></div>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Healthcare Excellence <br><span>Digitally Reimagined</span></h1>
+            <p>Providing seamless patient management and advanced digital tracking.</p>
+            <a href="/patients.html" class="btn-main">New Patient Registration</a>
+        </div>
+    </header>
+
+    <div class="container" style="background: transparent; box-shadow: none;">
+        <section class="about-clinic" style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+            <div class="section-header">
+                <span>DISCOVER MORE</span>
+                <h2>About LifeCare Management</h2>
+            </div>
+            <div class="about-flex">
+                <div class="about-text">
+                    <p>Welcome to <strong>LifeCare</strong>, where technology meets compassionate care. We provide a seamless digital experience for patients and professionals alike.</p>
+                    <p>Our approach ensures that your medical history and billing are handled with speed, security, and precision.</p>
+                    <ul class="clinic-features">
+                        <li>✨ Digital Portals</li>
+                        <li>✨ Secure Billing</li>
+                        <li>✨ Fast Reports</li>
+                        <li>✨ Expert Staff</li>
+                    </ul>
+                </div>
+                <div class="about-decoration">
+                    <div class="stat-box"><strong>10k+</strong> Patients</div>
+                    <div class="stat-box"><strong>50+</strong> Specialists</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews-section" style="margin-top: 60px;">
+            <div class="section-header">
+                <span>TESTIMONIALS</span>
+                <h2>What Our Patients Say</h2>
+            </div>
+            <div class="review-grid">
+                <div class="review-card">
+                    <p class="quote">"The digital billing system is incredibly fast. I got my reports instantly on my phone."</p>
+                    <div class="reviewer">- Rajesh Kumar</div>
+                </div>
+                <div class="review-card">
+                    <p class="quote">"Expert doctors and very professional staff. Highly recommend LifeCare for any emergency."</p>
+                    <div class="reviewer">- Ananya Sharma</div>
+                </div>
+                <div class="review-card">
+                    <p class="quote">"The management system is very user-friendly. Managing my appointments is now very easy."</p>
+                    <div class="reviewer">- Jagrurati S.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="doctor-intro" style="margin-top: 60px; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+            <div class="section-header">
+                <span>OUR TEAM</span>
+                <h2>Meet Our Specialists</h2>
+            </div>
+            <div class="doc-bio-card">
+                <div class="doc-img-container">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500" alt="Doctor">
+                </div>
+                <h3>Expert Consultation</h3>
+                <p>Our team consists of globally recognized experts dedicated to providing the best medical excellence.</p>
+            </div>
         </section>
     </div>
-    <footer>Build with P Suman Patro</footer>
+
+    <footer>
+        <p>© 2026 LifeCare Management System | Build with ❤️ by P Suman Patro</p>
+    </footer>
 </body>
 </html>

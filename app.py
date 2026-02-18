@@ -1,3 +1,4 @@
+# Project file: app.py — main HTTP server and router; serves templates and exposes /api/ endpoints handled by `database.py`
 import http.server
 import socketserver
 import json
@@ -10,14 +11,19 @@ class ClinicHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path.startswith('/api/'):
             self._send_json(handle_request(self.path, 'GET'))
-        elif self.path == '/' or self.path == '/index.html':
-            self.path = '/templates/index.html'
-            return super().do_GET()
-        elif self.path.endswith('.html') and not self.path.startswith('/templates/'):
-            self.path = f'/templates{self.path}'
-            return super().do_GET()
         else:
-            return super().do_GET()
+            # Extract path without query string
+            path_only = self.path.split('?')[0]
+            query_string = self.path[len(path_only):] if len(self.path) > len(path_only) else ''
+            
+            if path_only == '/' or path_only == '/index.html':
+                self.path = f'/templates/index.html{query_string}'
+                return super().do_GET()
+            elif path_only.endswith('.html') and not path_only.startswith('/templates/'):
+                self.path = f'/templates{path_only}{query_string}'
+                return super().do_GET()
+            else:
+                return super().do_GET()
 
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])

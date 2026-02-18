@@ -1,8 +1,11 @@
+<!-- Project file: templates/billing.html — template for billing UI; loads billing.js -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     <title>Billing Management</title>
 </head>
 <body>
@@ -15,8 +18,12 @@
     <div class="container">
         <h2>Patient Billing</h2>
         <form id="billForm">
-            <select id="bn" onchange="autoFillContact()" required><option value="">Select Patient</option></select>
-            <select id="bd" required><option value="">Select Doctor</option></select>
+            <select id="bn" onchange="autoFillContact()" required>
+                <option value="">Select Patient</option>
+            </select>
+            <select id="bd" required>
+                <option value="">Select Doctor</option>
+            </select>
             <input type="text" id="bc" placeholder="Contact" readonly>
             <input type="number" id="ba" placeholder="Amount" required>
             <button type="submit">Submit Bill</button>
@@ -24,16 +31,26 @@
 
         <div style="margin-top: 20px; display: flex; gap: 10px;">
             <button onclick="sortTable('billTable', 4)">Sort By Amount</button>
+            <button onclick="downloadBillingPDF()" style="background: #f4b400; color: black;">Download PDF</button>
         </div>
 
         <table id="billTable">
             <thead>
-                <tr><th>ID</th><th>Patient Name</th><th>Doc ID</th><th>Contact</th><th>Amount</th><th>Actions</th></tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Patient Name</th>
+                    <th>Doc ID</th>
+                    <th>Contact</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
             </thead>
             <tbody></tbody>
         </table>
     </div>
     <script src="/static/js/billing.js"></script>
-    <footer>Build with P Suman Patro</footer>
+    <footer>
+        <p>© 2026 LifeCare Management System | Build with ❤️ by P Suman Patro</p>
+    </footer>
 </body>
 </html>
